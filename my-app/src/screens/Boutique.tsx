@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from "../components/Header"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import  FilterComponent  from '../components/FilterComponent';
+import FilterComponent from '../components/FilterComponent';
 
 interface Product {
   id: number;
@@ -17,9 +17,7 @@ interface Product {
   // Ajoutez d'autres champs du produit ici si nécessaire
 }
 
-
 const products: Product[] = [
-  // ... liste des produits avec leurs propriétés (category, price, rating, etc.)
   {
     id: 1,
     name: "Chocolat blanc",
@@ -100,214 +98,77 @@ const products: Product[] = [
     rating: 4.7,
     image: "./images/produit10.jpg"
   },
+  // Ajoutez d'autres produits ici
 ];
 
-export const Boutique = () => {
 
+
+export const Boutique = () => {
   const [categoryFilter, setCategoryFilter] = useState<string[]>([]);
   const [priceFilter, setPriceFilter] = useState({ min: 0, max: 100 });
   const [ratingFilter, setRatingFilter] = useState({ min: 0, max: 5 });
 
+   // Utiliser useEffect pour initialiser la checkbox "TOUS" lors du premier rendu
+   useEffect(() => {
+    setCategoryFilter(['TOUS']);
+  }, []);
 
-const filterProducts = (product: Product) => {
-  // Logique pour filtrer les produits en fonction des critères sélectionnés
-  // Utilisez les états categoryFilter, priceFilter et ratingFilter ici
-  // Filtrage par catégorie
-  const categoryMatch = categoryFilter.includes('TOUS') || categoryFilter.includes(product.category);
 
-  // Filtrage par prix
-  const priceMatch = product.price >= priceFilter.min && product.price <= priceFilter.max;
+  const filterProducts = (product: Product) => {
+    // Logique pour filtrer les produits en fonction des critères sélectionnés
+    // Utilisez les états categoryFilter, priceFilter et ratingFilter ici
+    // Filtrage par catégorie
+    const categoryMatch = categoryFilter.includes('TOUS') || categoryFilter.includes(product.category);
 
-  // Filtrage par note
-  const ratingMatch = product.rating >= ratingFilter.min && product.rating <= ratingFilter.max;
+    // Filtrage par prix
+    const priceMatch = product.price >= priceFilter.min && product.price <= priceFilter.max;
 
-  // Vérifier si toutes les conditions de filtrage sont satisfaites
-  return categoryMatch && priceMatch && ratingMatch;
+    // Filtrage par note
+    const ratingMatch = product.rating >= ratingFilter.min && product.rating <= ratingFilter.max;
+
+    // Vérifier si toutes les conditions de filtrage sont satisfaites
+    return categoryMatch && priceMatch && ratingMatch;
+  };
+
+  const filteredProducts = products.filter(filterProducts);
+
+  return (
+    <div className="boutique">
+      <Header />
+
+      <div className="col-12 overlay">
+        <FilterComponent
+          categoryFilter={categoryFilter}
+          onCategoryFilterChange={setCategoryFilter}
+          priceFilter={priceFilter}
+          onPriceFilterChange={setPriceFilter}
+          ratingFilter={ratingFilter}
+          onRatingFilterChange={setRatingFilter}
+        />
+
+        <Container>
+          <Row>
+            {filteredProducts.map((product) => (
+              <Col xs key={product.id}>
+                <Card style={{ width: '20rem' }} className="m-3">
+                  <Card.Img variant="top" src={product.image} />
+                  <Card.Body>
+                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Text>
+                      <h1>{product.price.toFixed(2)}€</h1>
+                    </Card.Text>
+                    <Button variant="primary" href={`/Detail${product.id}`}>
+                      Voir le produit
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
+    </div>
+  );
 };
 
-const filteredProducts = products.filter(filterProducts);
-
-
-    return (
-        <div className="boutique">
-            <Header/>
-
-            
-            
-            <div className=" col-12 overlay">
-
-            <FilterComponent
-           categoryFilter={categoryFilter}
-           onCategoryFilterChange={setCategoryFilter}
-           priceFilter={priceFilter}
-           onPriceFilterChange={setPriceFilter}
-           ratingFilter={ratingFilter}
-           onRatingFilterChange={setRatingFilter}
-        />
-            
-            <Container>
-            <Row>
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className=" m-3">
-        <Card.Img variant="top"src={product.image} />
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-             ))}
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}  />
-        <Card.Body>
-          <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-           <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-              ))}
-
-             {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-             ))}
-
-              {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-             ))}
-
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image} />
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-
-            {filteredProducts.map((product) => (
-            <Col xs key={product.id}>
-            <Card style={{ width: '20rem' }} className="m-3">
-        <Card.Img variant="top" src={product.image}/>
-        <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
-          <h1>{product.price.toFixed(2)}€</h1>
-          </Card.Text>
-          <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
-        </Card.Body>
-      </Card>
-            </Col>
-            ))}
-
-      
-
-      </Row>
-      </Container>
-    </div>
-        </div>
-
-    );
-} 
+// export default Boutique;

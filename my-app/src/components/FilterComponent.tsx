@@ -46,21 +46,21 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   const [isSticky, setIsSticky] = useState(false);
 
   // Fonction pour mettre à jour l'état isSticky en fonction de la position de défilement
-  // const handleScroll = () => {
-  //   const footer = document.getElementById('footer');
-  //   if (footer) {
-  //     const { top } = footer.getBoundingClientRect();
-  //     setIsSticky(top > window.innerHeight);
-  //   }
-  // };
+  const handleScroll = () => {
+    const footer = document.getElementById('footer');
+    if (footer) {
+      const { top } = footer.getBoundingClientRect();
+      setIsSticky(top > window.innerHeight);
+    }
+  };
 
   // Utilisez useEffect pour ajouter l'événement de défilement au chargement du composant
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className={`filter-component ${isSticky ? 'filter-sticky' : ''}`}>

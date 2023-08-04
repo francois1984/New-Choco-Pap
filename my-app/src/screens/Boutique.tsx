@@ -152,9 +152,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className=" m-3">
         <Card.Img variant="top"src={product.image} />
         <Card.Body>
-          <Card.Title>Chocolat blanc</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>5.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -167,9 +167,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}  />
         <Card.Body>
-          <Card.Title>Chocolat au lait</Card.Title>
+          <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-           <h1>4.99€</h1>
+           <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -182,9 +182,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Chocolat noir</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-          <h1>6.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -197,9 +197,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Noix/Noisette</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>7.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -212,9 +212,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Fruit</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>3.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -228,9 +228,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Caramel</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>4.49€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -244,9 +244,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Liqueur</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>8.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -260,9 +260,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image} />
         <Card.Body>
-          <Card.Title>Love choco</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            <h1>7.49€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -276,9 +276,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Bulle de perles</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-           <h1>9.49€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>
@@ -292,9 +292,9 @@ const filteredProducts = products.filter(filterProducts);
             <Card style={{ width: '20rem' }} className="m-3">
         <Card.Img variant="top" src={product.image}/>
         <Card.Body>
-          <Card.Title>Toffee fourré</Card.Title>
+        <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-          <h1>6.99€</h1>
+          <h1>{product.price.toFixed(2)}€</h1>
           </Card.Text>
           <Button variant="primary" href={`/Detail${product.id}`}>Voir le produit</Button>
         </Card.Body>

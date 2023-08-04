@@ -1,0 +1,21 @@
+/* Styles pour la boutique */
+
+
+  
+  /* Colonne de gauche (Filtre) */
+  .position-fixed {
+    position: fixed;
+    top: 100px; /* Ajustez la valeur selon la position souhaitée */
+  }
+  
+  /* Colonne de droite (Boutique) */
+  .col-lg-9 {
+    margin-left: 45%;
+    
+  }
+  
+  .filter-column {
+    max-height: calc(910vh - 200px); /* Ajustez la hauteur maximale selon vos besoins */
+    /* overflow-y: auto; Permet le défilement si le contenu du filtre dépasse la hauteur maximale */
+  }
+  

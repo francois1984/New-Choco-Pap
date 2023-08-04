@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FilterComponent from '../components/FilterComponent';
+import '../Boutique.css';
 
 interface Product {
   id: number;
@@ -137,7 +138,10 @@ export const Boutique = () => {
       <Header />
 
       <div className="col-12 overlay">
-        <FilterComponent
+      <Container>
+          <Row className=''>
+          <Col lg={4} className="filter-column">
+          <FilterComponent
           categoryFilter={categoryFilter}
           onCategoryFilterChange={setCategoryFilter}
           priceFilter={priceFilter}
@@ -145,11 +149,12 @@ export const Boutique = () => {
           ratingFilter={ratingFilter}
           onRatingFilterChange={setRatingFilter}
         />
+          </Col>
 
-        <Container>
-          <Row>
+        
+          
             {filteredProducts.map((product) => (
-              <Col xs key={product.id}>
+              <Col lg={3} xs key={product.id} >
                 <Card style={{ width: '20rem' }} className="m-3">
                   <Card.Img variant="top" src={product.image} />
                   <Card.Body>
@@ -166,8 +171,12 @@ export const Boutique = () => {
             ))}
           </Row>
         </Container>
-      </div>
-    </div>
+          </div>
+          
+        </div>
+
+        
+    
   );
 };
 

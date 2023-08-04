@@ -1,0 +1,26 @@
+/* Styles pour le filtre */
+
+.filter-component {
+    
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+
+   
+  }
+  
+  .filterTitle {
+    color: white;
+    font-size: 1.5rem;
+  }
+  
+  .form-check {
+    margin-bottom: 0.5rem;
+  }
+  
+  .filter-sticky {
+    position: sticky;
+    top: 0;
+  }
+ 
+  

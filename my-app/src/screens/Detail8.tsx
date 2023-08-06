@@ -23,7 +23,7 @@ export const Detail8 = () => {
 
   const products: Product[] = [
     {
-      id: 2,
+      id: 8,
       name: 'Love choco',
       price: 7.49,
       image: './images/produit8.jpg',

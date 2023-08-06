@@ -23,9 +23,9 @@ export const Detail6 = () => {
 
   const products: Product[] = [
     {
-      id: 2,
+      id: 6,
       name: 'Caramel',
-      price: 4.99,
+      price: 4.49,
       image: './images/produit6.jpg',
       quantity: 0,
     },
@@ -85,7 +85,7 @@ export const Detail6 = () => {
               <Button className="btnDetail d-flex m-2  bg-secondary" onClick={() => setShowPopup(true)}>Afficher le panier</Button>
             </div>
             <Figure.Caption className="text-center text-light">
-              <h1>6.99€</h1>
+              <h1>4.49€</h1>
               <h2>Caramel</h2>
               Nulla vitae elit libero, a pharetra augue mollis interdum.
             </Figure.Caption>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header } from "../components/Header"
+import Header  from "../components/Header"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -135,7 +135,7 @@ export const Boutique = () => {
 
   return (
     <div className="boutique">
-      <Header />
+      <Header cartItemCount={0}/>
 
       <div className="col-12 overlay">
       <Container>

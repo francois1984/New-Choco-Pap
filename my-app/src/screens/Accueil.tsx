@@ -1,11 +1,13 @@
-import { Header } from '../components/Header'; 
+import  Header from '../components/Header'; 
 import Carousel from 'react-bootstrap/Carousel';
+
+
 
 export const Accueil = () => {
     return (
         <main>
             <div>
-            <Header/>
+            <Header cartItemCount={0}/>
             </div>
             
             <div>

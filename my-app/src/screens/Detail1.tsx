@@ -6,7 +6,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import Card from 'react-bootstrap/Card';
 import Popup from '../components/popup';
 import '../Popup.css';
-import { useCartContext } from '../components/CartContext'; 
+import { useCartContext } from '../components/CartContext';
 
 interface Product {
   id: number;
@@ -19,13 +19,13 @@ interface Product {
 export const Detail1 = () => {
   const [open, setOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const { cartItems, addToCart } = useCartContext(); // Use cartItems from the context
+  const { cartItems, addToCart, removeFromCart, clearCart } = useCartContext(); // Use cartItems and cart-related functions from the context
 
   const products: Product[] = [
     {
       id: 1,
       name: 'Chocolat blanc',
-      price: 4.99,
+      price: 5.99,
       image: './images/produit1.jpg',
       quantity: 0,
     },
@@ -37,7 +37,12 @@ export const Detail1 = () => {
   };
 
   const handleRemoveFromCart = (product: Product) => {
-    setShowPopup(false);
+    removeFromCart(product);
+  };
+
+  const handleClearCart = () => {
+    clearCart(); // Utilise la fonction clearCart du contexte pour vider le panier
+    setShowPopup(false); // Ferme la fenêtre popup après avoir vidé le panier
   };
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -80,8 +85,8 @@ export const Detail1 = () => {
               <Button className="btnDetail d-flex m-2  bg-secondary" onClick={() => setShowPopup(true)}>Afficher le panier</Button>
             </div>
             <Figure.Caption className="text-center text-light">
-              <h1>4.99€</h1>
-              <h2> Chocolat au lait</h2>
+              <h1>5.99€</h1>
+              <h2> Chocolat blanc</h2>
               Nulla vitae elit libero, a pharetra augue mollis interdum.
             </Figure.Caption>
           </Figure>
@@ -114,15 +119,13 @@ export const Detail1 = () => {
 
       </div>
       {/* Afficher le bouton pour ouvrir la popup */}
-
-
       {/* Afficher la popup si showPopup est true */}
       {showPopup && (
         <Popup
           products={cartItems}
           onClose={() => setShowPopup(false)}
           onRemoveItem={handleRemoveFromCart}
-          onClearCart={() => {}} // Vous pouvez remplacer cette fonction par votre propre fonction de vidage de panier
+          onClearCart={handleClearCart} // Utilise la fonction handleClearCart pour vider le panier
         />
       )}
     </div>

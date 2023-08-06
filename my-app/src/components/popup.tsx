@@ -2,7 +2,6 @@ import React from 'react';
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 
-
 interface Product {
   id: number;
   name: string;

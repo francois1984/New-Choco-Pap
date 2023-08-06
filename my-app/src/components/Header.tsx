@@ -1,18 +1,14 @@
 import React from 'react';
-import { useCartContext} from './CartContext';
+// import { useCartContext } from './CartContext';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
 
 interface HeaderProps {
   cartItemCount: number;
 }
 
-
-const Header: React.FC<HeaderProps> = () => {
-  const { cartItems } = useCartContext(); // Utiliser le hook useCartContext pour accéder aux articles du panier
-  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0); // Calculer le nombre d'articles dans le panier
+const Header: React.FC<HeaderProps> = ({ cartItemCount }) => {
   return (
     <main>
       <nav className='BarNavig'>

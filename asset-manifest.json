@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/New-Choco-Pap/static/css/main.cae893f0.css",
+    "main.js": "/New-Choco-Pap/static/js/main.8c24e55c.js",
+    "static/js/787.28cb0dcd.chunk.js": "/New-Choco-Pap/static/js/787.28cb0dcd.chunk.js",
+    "static/media/accueil2.jpg": "/New-Choco-Pap/static/media/accueil2.fea5d289f7e787662ff6.jpg",
+    "static/media/accueil1.jpg": "/New-Choco-Pap/static/media/accueil1.287edc4c8cac770952fa.jpg",
+    "index.html": "/New-Choco-Pap/index.html",
+    "main.cae893f0.css.map": "/New-Choco-Pap/static/css/main.cae893f0.css.map",
+    "main.8c24e55c.js.map": "/New-Choco-Pap/static/js/main.8c24e55c.js.map",
+    "787.28cb0dcd.chunk.js.map": "/New-Choco-Pap/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cae893f0.css",
+    "static/js/main.8c24e55c.js"
+  ]
+}
